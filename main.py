@@ -100,8 +100,8 @@ async def on_message(message):
         await message.channel.send(response.text)
     except Exception as e:
         print(f"Ошибка ИИ: {e}")
-
-client.run(DISCORD_TOKEN)
+# --- ИСПРАВЛЕННЫЙ ЗАПУСК СЕРВЕРА ---
+import os
 from flask import Flask
 from threading import Thread
 
@@ -112,9 +112,11 @@ def home():
     return "J.A.R.V.I.S. онлайн, сэр."
 
 def run():
-    app.run(host='0.0.0.0', port=8080)
+    # Render сам назначит порт, мы просто его берем из системы
+    port = int(os.environ.get('PORT', 8080))
+    app.run(host='0.0.0.0', port=port)
 
-# Запуск веб-сервера в отдельном потоке
+# Запуск в отдельном потоке
 t = Thread(target=run)
 t.start()
-
+	
