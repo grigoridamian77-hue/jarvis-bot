@@ -4,8 +4,12 @@ from google.genai import types
 
 # --- НАСТРОЙКА КЛЮЧЕЙ ---
 # Сюда вставьте новый токен, который только что сбросили в браузере:
-DISCORD_TOKEN = "DISCORD_TOKEN"
-GEMINI_API_KEY = "GOOGLE_TOKEN"
+import os
+# ... остальные импорты ...
+
+# --- НАСТРОЙКА КЛЮЧЕЙ ---
+DISCORD_TOKEN = os.environ.get('DISCORD_TOKEN')
+GEMINI_API_KEY = os.environ.get('GOOGLE_TOKEN')
 
 # --- ИНСТРУКЦИЯ ДЛЯ ДЖАРВИСА ---
 JARVIS_PROMPT = """
