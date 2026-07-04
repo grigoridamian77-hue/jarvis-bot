@@ -116,8 +116,10 @@ def run():
     # Render сам назначит порт, мы просто его берем из системы
     port = int(os.environ.get('PORT', 8080))
     app.run(host='0.0.0.0', port=port)
-
-# Запуск в отдельном потоке
-t = Thread(target=run)
-t.start()
-	
+# Запуск
+if __name__ == "__main__":
+    # Запуск Flask в потоке
+    t = threading.Thread(target=run_web)
+    t.start()
+    # Запуск бота
+    bot.run(os.environ.get('DISCORD_TOKEN'))
