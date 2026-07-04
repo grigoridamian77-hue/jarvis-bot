@@ -102,3 +102,19 @@ async def on_message(message):
         print(f"Ошибка ИИ: {e}")
 
 client.run(DISCORD_TOKEN)
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "J.A.R.V.I.S. онлайн, сэр."
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+# Запуск веб-сервера в отдельном потоке
+t = Thread(target=run)
+t.start()
+
