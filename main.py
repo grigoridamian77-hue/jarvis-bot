@@ -1,12 +1,12 @@
+import os
 import discord
-from google import genai
-from google.genai import types
+import threading 
+from discord.ext import commands
+from flask import Flask
 
 # --- НАСТРОЙКА КЛЮЧЕЙ ---
 # Сюда вставьте новый токен, который только что сбросили в браузере:
-import os
 # ... остальные импорты ...
-
 # --- НАСТРОЙКА КЛЮЧЕЙ ---
 # --- НАСТРОЙКА КЛЮЧЕЙ ---
 # Здесь мы только указываем ИМЕНА переменных, которые настроили в Render
@@ -102,7 +102,6 @@ async def on_message(message):
     except Exception as e:
         print(f"Ошибка ИИ: {e}")
 # --- ИСПРАВЛЕННЫЙ ЗАПУСК СЕРВЕРА ---
-import os
 from flask import Flask
 from threading import Thread
 
@@ -112,7 +111,7 @@ app = Flask('')
 def home():
     return "J.A.R.V.I.S. онлайн, сэр."
 
-def run():
+def run_web():
     # Render сам назначит порт, мы просто его берем из системы
     port = int(os.environ.get('PORT', 8080))
     app.run(host='0.0.0.0', port=port)
@@ -122,4 +121,4 @@ if __name__ == "__main__":
     t = threading.Thread(target=run_web)
     t.start()
     # Запуск бота
-    bot.run(os.environ.get('DISCORD_TOKEN'))
+    client.run(os.environ.get('DISCORD_TOKEN'))
