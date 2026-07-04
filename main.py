@@ -8,9 +8,11 @@ import os
 # ... остальные импорты ...
 
 # --- НАСТРОЙКА КЛЮЧЕЙ ---
+# --- НАСТРОЙКА КЛЮЧЕЙ ---
+# Здесь мы только указываем ИМЕНА переменных, которые настроили в Render
 DISCORD_TOKEN = os.environ.get('DISCORD_TOKEN')
-GEMINI_API_KEY = os.environ.get('GOOGLE_TOKEN')
-
+GEMINI_API_KEY = os.environ.get('GOOGLE_TOKEN') 
+')
 # --- ИНСТРУКЦИЯ ДЛЯ ДЖАРВИСА ---
 JARVIS_PROMPT = """
 Ты только что был создан командой: "Stark indestris".
